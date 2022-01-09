@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 
 namespace SqlCoreUtilityLibrary.Classes
 {
     public static class SqlTypeHelper
     {
-        private static readonly Dictionary<Type, SqlDbType> TypeMap;
+        private static readonly Dictionary<Type, SqlDbType> sqlTypeMap;
+        private static readonly Dictionary<Type, OleDbType> oleDbTypeMap;
 
-        // Create and populate the dictionary in the static constructor
         static SqlTypeHelper()
         {
-            Dictionary<Type, SqlDbType> TypeMap = new()
+            sqlTypeMap = new Dictionary<Type, SqlDbType>
             {
                 [typeof(string)] = SqlDbType.NVarChar,
                 [typeof(char[])] = SqlDbType.NVarChar,
@@ -29,25 +30,45 @@ namespace SqlCoreUtilityLibrary.Classes
                 [typeof(TimeSpan)] = SqlDbType.Time
             };
 
-            /* not in above then added them */
+            oleDbTypeMap = new Dictionary<Type, OleDbType>
+            {
+                [typeof(string)] = OleDbType.VarChar ,
+                [typeof(long)] = OleDbType.BigInt ,
+                [typeof(byte[])] = OleDbType.Binary ,
+                [typeof(bool)] = OleDbType.Boolean ,
+                [typeof(decimal)] = OleDbType.Decimal ,
+                [typeof(DateTime)] = OleDbType.Date ,
+                [typeof(TimeSpan)] = OleDbType.DBTime ,
+                [typeof(double)] = OleDbType.Double ,
+                [typeof(Exception)] =OleDbType.Error ,
+                [typeof(Guid)] =  OleDbType.Guid ,
+                [typeof(int)]  = OleDbType.Integer ,
+                [typeof(float)] = OleDbType.Single ,
+                [typeof(short)] = OleDbType.SmallInt ,
+                [typeof(sbyte)] = OleDbType.TinyInt ,
+                [typeof(ulong)] = OleDbType.UnsignedBigInt ,
+                [typeof(uint)] = OleDbType.UnsignedInt ,
+                [typeof(ushort)] = OleDbType.UnsignedSmallInt ,
+                [typeof(byte)] = OleDbType.UnsignedTinyInt 
+            };
         }
-
+        
         /// <summary>
         /// Get SqlDbType for givenType
         /// </summary>
-        /// <param name="giveType"></param>
+        /// <param name="type"></param>
         /// <returns><see cref="SqlDbType"/></returns>
-        public static SqlDbType GetDbType(Type giveType)
+        public static SqlDbType GetDatabaseType(Type type)
         {
-            // Allow nullable types to be handled
-            giveType = Nullable.GetUnderlyingType(giveType) ?? giveType;
 
-            if (TypeMap.ContainsKey(giveType))
+            type = Nullable.GetUnderlyingType(type) ?? type;
+
+            if (sqlTypeMap.ContainsKey(type))
             {
-                return TypeMap[giveType];
+                return sqlTypeMap[type];
             }
 
-            throw new ArgumentException($"{giveType.FullName} is not a supported .NET class");
+            throw new ArgumentException($"{type.FullName} is not a supported .NET class");
         }
     }
 }

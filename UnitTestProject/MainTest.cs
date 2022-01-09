@@ -53,6 +53,55 @@ namespace UnitTestProject
             Assert.IsTrue(expectedResults.SequenceEqual(list));
         }
 
+        [TestMethod]
+        public void StringWhereInConditionsReturnKeys_Access()
+        {
+            // arrange
+            var expectedResults = new List<string>() 
+                { 
+                    "Ana Trujillo Emparedados y helados",
+                    "Antonio Moreno Taquería",
+                    "Bólido Comidas preparadas",
+                    "Bon app'",
+                    "Cactus Comidas para llevar",
+                    "Chop-suey Chinese",
+                    "Du monde entier",
+                    "Eastern Connection",
+                    "Familia Arquibaldo",
+                    "Folk och fä HB",
+                    "GROSELLA-Restaurante",
+                    "Laughing Bacchus Wine Cellars",
+                    "Let's Stop N Shop",
+                    "LINO-Delicateses",
+                    "Maison Dewey",
+                    "Mère Paillarde",
+                    "Morgenstern Gesundkost",
+                    "Océano Atlántico Ltda.",
+                    "Ottilies Käseladen",
+                    "Paris spécialités",
+                    "Queen Cozinha",
+                    "Santé Gourmet",
+                    "Simons bistro",
+                    "The Cracker Box",
+                    "Tortuga Restaurante",
+                    "Victuailles en stock",
+                    "White Clover Markets",
+                    "Wolski  Zajazd"
+                };
+
+            // act
+            var (list, _) = GetCustomersNamesBackFromAccess(new List<string>()
+            {
+                "Marketing Assistant",
+                "Owner",
+                "Sales Agent"
+            });
+
+            // assert
+            Assert.IsTrue(expectedResults.SequenceEqual(list));
+
+        }
+
         /// <summary>
         /// Determine if company identifiers are returned for WHERE IN condition,
         /// validate by names of companies in expectedResults

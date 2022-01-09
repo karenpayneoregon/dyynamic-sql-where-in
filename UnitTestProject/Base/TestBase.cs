@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using DbLibrary.LanguageExtensions;
 using Microsoft.Extensions.Configuration;
@@ -63,7 +65,7 @@ namespace UnitTestProject.Base
 
                 // After running this test click on the test method calling 
                 // this method and select "output" to view the SELECT statement.
-                Console.WriteLine(cmd.ActualCommandText());
+                //Debug.WriteLine(cmd.ActualCommandText());
 
                 var reader = cmd.ExecuteReader();
 
@@ -84,6 +86,59 @@ namespace UnitTestProject.Base
 
         }
 
+        public (List<string> list, Exception exception) GetCustomersNamesBackFromAccess(List<string> pNames)
+        {
+            var customerList = new List<string>();
+
+            var connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=NorthWind.accdb";
+
+            using var cn = new OleDbConnection() { ConnectionString = connectionString };
+            using var cmd = new OleDbCommand() { Connection = cn };
+
+            cmd.CommandText = OleDbWhereInParamBuilder
+                .BuildInClause("SELECT C.CompanyName, C.ContactName FROM Customers AS C WHERE (C.ContactTitle) IN ({0})", "CompName",
+                    pNames);
+
+            cmd.AddParamsToCommand("CompName", pNames);
+
+            /*
+             * Produces
+             *
+             * SELECT
+             *      C.CompanyName, C.ContactName
+             * FROM Customers AS C
+             * WHERE (C.ContactTitle) IN ('Marketing Assistant','Owner','Sales Agent')
+             */
+
+            foreach (OleDbParameter parameter in cmd.Parameters)
+            {
+                Debug.WriteLine(parameter.ParameterName);
+            }
+
+            Debug.WriteLine("");
+
+            try
+            {
+                cn.Open();
+                Debug.WriteLine(cmd.ActualCommandText());
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        customerList.Add(reader.GetString(0));
+                    }
+                }
+
+                return (customerList, null);
+            }
+            catch (Exception ex)
+            {
+                return (null, ex);
+            }
+        }
+
         /// <summary>
         /// Creates a dynamic WHERE IN condition based on existing company names. The
         /// method <see cref="GetCustomersKeysBack"/> is more likely to be used this 
@@ -99,7 +154,7 @@ namespace UnitTestProject.Base
 
             using var cn = new SqlConnection() { ConnectionString = ConnectionString };
             using var cmd = new SqlCommand() { Connection = cn };
-            // Assign values to each parameter and set to command, CommandText
+
             cmd.CommandText = SqlWhereInParamBuilder
                 .BuildInClause("SELECT CompanyName FROM dbo.Company WHERE CompanyName IN ({0})", "CompName", 
                     pNames);
@@ -110,6 +165,7 @@ namespace UnitTestProject.Base
             {
                 cn.Open();
                 var reader = cmd.ExecuteReader();
+
                 if (reader.HasRows)
                 {
                     while (reader.Read())

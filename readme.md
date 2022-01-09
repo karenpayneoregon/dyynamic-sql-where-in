@@ -1,10 +1,16 @@
 # Dynamic WHERE IN (C#)
 
-
-
 This article provides methods for writing [SQL WHERE IN](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/in-transact-sql?view=sql-server-2017) conditions in `C#` dynamically for `SQL-Server` tables using `SqlClient` data provider. `WHERE IN` condition are used to assist for an alternative to using `OR` conditions in a `SELECT` and `DELETE` statement are most common. Common reasons in a .NET solution, one example would be to allow a user to filter on customers by multiple countries while another example may be to allow a user to remove multiple customers. 
 
 Both methods may start with a multi-select list or multi-select checkbox control/input dependent on the project type e.g. ASP.NET, WPF or Windows Forms etc.
+
+## SQL-Server/OleDb versions
+
+There are two versions, one for `SQL-Server` and one for `OleDb/MS-Access`. Currently the OleDb versionn has limited testing.
+
+
+
+
 
 Example where this might be used.
 

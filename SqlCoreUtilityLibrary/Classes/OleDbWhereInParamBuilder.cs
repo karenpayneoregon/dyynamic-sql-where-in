@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
 
 namespace SqlCoreUtilityLibrary.Classes
 {
-    public static class SqlWhereInParamBuilder
+    public static class OleDbWhereInParamBuilder
     {
         /// <summary>
         /// Creates parameters for IN of the WHERE clause
@@ -32,7 +33,7 @@ namespace SqlCoreUtilityLibrary.Classes
         /// <param name="cmd">Valid command object</param>
         /// <param name="pPrefix">Prefix for parameter names</param>
         /// <param name="parameters">Parameter values</param>
-        public static void AddParamsToCommand<T>(this SqlCommand cmd, string pPrefix, IEnumerable<T> parameters)
+        public static void AddParamsToCommand<T>(this OleDbCommand cmd, string pPrefix, IEnumerable<T> parameters)
         {
             var parameterValues = parameters.Select((paramText) => 
                 paramText.ToString()).ToArray();
@@ -44,10 +45,10 @@ namespace SqlCoreUtilityLibrary.Classes
              
             for (int index = 0; index < parameterNames.Length; index++)
             {
-                cmd.Parameters.Add(new SqlParameter()
+                cmd.Parameters.Add(new OleDbParameter()
                 {
                     ParameterName = parameterNames[index],
-                    SqlDbType = SqlTypeHelper.GetDatabaseType(typeof(T)),
+                    OleDbType = OleDbTypeHelper.GetDatabaseType(typeof(T)),
                     Value = parameterValues[index]
                 });
             }
