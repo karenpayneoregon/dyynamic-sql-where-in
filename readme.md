@@ -8,9 +8,9 @@ Both methods may start with a multi-select list or multi-select checkbox control
 
 There are two versions, one for `SQL-Server` and one for `OleDb/MS-Access`. Currently the OleDb versionn has limited testing.
 
+Example included for windows forms
 
-
-
+![img](SimpleExamples/assets/whereInForm1.png)
 
 Example where this might be used.
 
