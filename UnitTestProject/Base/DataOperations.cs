@@ -174,7 +174,7 @@ namespace UnitTestProject.Base
                 return (null, ex);
             }
         }
-
+        
         /// <summary>
         /// Creates a dynamic WHERE IN condition based on existing company primary keys
         /// </summary>
@@ -194,7 +194,7 @@ namespace UnitTestProject.Base
 
             // populate each parameter with values from pIdentifiers
             cmd.AddParamsToCommand("CompId", pIdentifiers);
-
+            Debug.WriteLine(cmd.ActualCommandText());
             try
             {
                 cn.Open();
