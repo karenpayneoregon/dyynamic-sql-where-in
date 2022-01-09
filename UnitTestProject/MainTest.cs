@@ -24,7 +24,7 @@ namespace UnitTestProject
             };
 
             // act
-            var (list, _) = GetCustomersNamesBack(new List<string>()
+            var (list, _ ) = DataOperations.GetCustomersNamesBack(new List<string>()
             {
                 "Apple",
                 "FaceBook",
@@ -42,7 +42,7 @@ namespace UnitTestProject
             var expectedResults = new List<int>() { 2, 4, 5 };
 
             // act
-            var (list, _) = GetCustomersKeysBack(new List<string>()
+            var (list, _ ) = DataOperations.GetCustomersKeysBack(new List<string>()
             {
                 "Apple",
                 "FaceBook",
@@ -90,7 +90,7 @@ namespace UnitTestProject
                 };
 
             // act
-            var (list, _) = GetCustomersNamesBackFromAccess(new List<string>()
+            var (list, _ ) = DataOperations.GetCustomersNamesBackFromAccess(new List<string>()
             {
                 "Marketing Assistant",
                 "Owner",
@@ -118,7 +118,7 @@ namespace UnitTestProject
             };
 
             // act
-            var (list, _) = GetByPrimaryKeys(new List<int>() { 2, 4, 5 });
+            var (list, _ ) = DataOperations.GetByPrimaryKeys(new List<int>() { 2, 4, 5 });
 
             // assert
             Assert.IsTrue(expectedResults.SequenceEqual(list));
@@ -143,7 +143,7 @@ namespace UnitTestProject
             };
 
             // act
-            var (list, exception) = GetByPrimaryKeys_NotIn(new List<int>() { 2, 4, 5 });
+            var (list, _ ) = DataOperations.GetByPrimaryKeys_NotIn(new List<int>() { 2, 4, 5 });
 
             // assert
             Assert.IsTrue(expectedResults.SequenceEqual(list));
@@ -159,22 +159,14 @@ namespace UnitTestProject
             var expectedResults = new List<int>() { 1, 3 };
 
             // act
-            var (list, _) = GetStartDatesList(new List<string>() { "2018-01-01", "2017-01-03" });
+            var (list, _ ) = DataOperations.GetStartDatesList(new List<string>()
+            {
+                "2018-01-01", 
+                "2017-01-03"
+            });
 
             // assert
             Assert.IsTrue(expectedResults.SequenceEqual(list));
-        }
-        [TestMethod]
-        [TestTraits(Trait.PlaceHolder)]
-        public void TestMethod1()
-        {
-            // arrange
-
-
-            // act
-
-
-            // assert
         }
 
     }
