@@ -29,6 +29,10 @@ namespace SimpleExamples.Classes
             return _connectionString;
         }
 
+        /// <summary>
+        /// Get all companies from the database table
+        /// </summary>
+        /// <returns></returns>
         public static List<Company> GetCompanies()
         {
             var list = new List<Company>();
@@ -51,6 +55,11 @@ namespace SimpleExamples.Classes
             return list;
         }
 
+        /// <summary>
+        /// Get company names from array of identifiers
+        /// </summary>
+        /// <param name="pIdentifiers">CheckedListBox selections</param>
+        /// <returns>List of companies</returns>
         public static (List<string> list, Exception exception) GetByPrimaryKeys(List<int> pIdentifiers)
         {
 
@@ -58,6 +67,7 @@ namespace SimpleExamples.Classes
 
             using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
             using var cmd = new SqlCommand() { Connection = cn };
+
             // create one parameter for each key in pIdentifiers
             cmd.CommandText = SqlWhereInParamBuilder
                 .BuildInClause("SELECT CompanyName FROM dbo.Company WHERE id IN ({0})", "CompId",
@@ -91,7 +101,11 @@ namespace SimpleExamples.Classes
 
         private static IConfigurationRoot ReadAppsettings(out IConfigurationBuilder builder)
         {
-            builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            builder = new ConfigurationBuilder().AddJsonFile(
+                "appsettings.json", optional: 
+                false, reloadOnChange: 
+                true);
+
             IConfigurationRoot config = builder.Build();
             return config;
         }
