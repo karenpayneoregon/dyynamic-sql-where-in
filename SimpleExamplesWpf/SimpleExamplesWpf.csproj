@@ -5,6 +5,7 @@
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<LangVersion>9.0</LangVersion>
 		<UseWPF>true</UseWPF>
+		<ApplicationIcon>csharp1.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -27,6 +28,9 @@
 
 	<ItemGroup>
 	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="csharp1.ico">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
