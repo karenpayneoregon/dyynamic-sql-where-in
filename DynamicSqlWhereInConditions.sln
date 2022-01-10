@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net framework", "net framew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExamples", "SimpleExamples\SimpleExamples.csproj", "{819F5699-AB15-4A7E-9FC9-80E84CF1C0A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExamplesWpf", "SimpleExamplesWpf\SimpleExamplesWpf.csproj", "{0DAF7269-A408-4FB1-B519-E405B03D502A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,14 @@ Global
 		{819F5699-AB15-4A7E-9FC9-80E84CF1C0A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{819F5699-AB15-4A7E-9FC9-80E84CF1C0A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{819F5699-AB15-4A7E-9FC9-80E84CF1C0A2}.Release|x86.Build.0 = Release|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Debug|x86.Build.0 = Debug|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Release|x86.ActiveCfg = Release|Any CPU
+		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +90,7 @@ Global
 		{22D2C2A5-C253-4C1A-9987-664B97A024AF} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
 		{C0186C53-45CA-4C43-AA94-006F1CE33A9A} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
 		{819F5699-AB15-4A7E-9FC9-80E84CF1C0A2} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
+		{0DAF7269-A408-4FB1-B519-E405B03D502A} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34A459BE-BA0F-4662-8B9F-16B24B0093D3}
