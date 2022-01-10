@@ -1,0 +1,35 @@
+﻿<Window
+    x:Class="ListBoxWPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ListBoxWPF"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    Title="Code sample"
+    Width="525"
+    Height="350"
+    WindowStartupLocation="CenterScreen">
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+        <telerik:RadListBox
+            x:Name="ListBox"
+            Grid.Column="0"
+            Margin="10"
+            ItemsSource="{Binding ItemsSource}">
+            <telerik:RadListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Margin="2" IsChecked="{Binding IsChecked}" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadListBox.ItemTemplate>
+        </telerik:RadListBox>
+        <StackPanel Grid.Column="1">
+            <Button Command="{Binding GetCheckedItemsCommand}" Content="Get Items" />
+            <TextBlock Text="{Binding CheckedItemsString}" />
+        </StackPanel>
+    </Grid>
+</Window>
