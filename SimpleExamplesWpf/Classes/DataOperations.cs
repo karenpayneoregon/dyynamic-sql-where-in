@@ -37,7 +37,7 @@ namespace SimpleExamplesWpf.Classes
             using var cmd = new SqlCommand()
             {
                 Connection = cn, 
-                CommandText = "SELECT CountryIdentifier, [Name] FROM dbo.Countries;"
+                CommandText = "SELECT Id, [Name] FROM dbo.Countries;"
             };
 
             cn.Open();
@@ -66,11 +66,11 @@ namespace SimpleExamplesWpf.Classes
 
             // create one parameter for each key in pIdentifiers
             cmd.CommandText = SqlWhereInParamBuilder
-                .BuildInClause("SELECT [Name] FROM dbo.Countries WHERE id IN ({0})", "CountryId",
+                .BuildInClause("SELECT [Name] FROM dbo.Countries WHERE Id IN ({0})", "pId",
                     pIdentifiers);
 
             // populate each parameter with values from pIdentifiers
-            cmd.AddParamsToCommand("CountryId", pIdentifiers);
+            cmd.AddParamsToCommand("pId", pIdentifiers);
 
             GetCommandText?.Invoke(cmd.ActualCommandText());
 
@@ -103,7 +103,9 @@ namespace SimpleExamplesWpf.Classes
                 true);
 
             IConfigurationRoot config = builder.Build();
+
             return config;
+
         }
     }
 }

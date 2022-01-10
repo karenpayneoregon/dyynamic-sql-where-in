@@ -25,6 +25,12 @@ namespace SimpleExamplesWpf
         {
             InitializeComponent();
             DataContext = new ViewModel();
+            DataOperations.GetCommandText += ReceiveQuery;
+        }
+
+        private void ReceiveQuery(string sender)
+        {
+            ResultsTextBox.Text = QueryParsers.Format(sender);
         }
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
@@ -43,6 +49,14 @@ namespace SimpleExamplesWpf
             }
 
             Debug.WriteLine("");
+
+            var test = ((ViewModel)DataContext)
+                .Items
+                .Where(wrapper => wrapper.IsChecked)
+                .Select(wrapper => wrapper.Value.Id)
+                .ToList();
+
+            var results = DataOperations.GetByPrimaryKeys(test);
         }
     }
 }
