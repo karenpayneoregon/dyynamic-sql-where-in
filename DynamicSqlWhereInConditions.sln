@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D8B79C2-A670-4467-9234-F58F5F7C9301}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
+		DatabaseScripts\script.sql = DatabaseScripts\script.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net core", "net core", "{CAD93273-749F-4E6C-B8A3-99B8C44AE403}"
@@ -22,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net framework", "net framew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExamples", "SimpleExamples\SimpleExamples.csproj", "{819F5699-AB15-4A7E-9FC9-80E84CF1C0A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExamplesWpf", "SimpleExamplesWpf\SimpleExamplesWpf.csproj", "{0DAF7269-A408-4FB1-B519-E405B03D502A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExamplesWpf", "SimpleExamplesWpf\SimpleExamplesWpf.csproj", "{0DAF7269-A408-4FB1-B519-E405B03D502A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

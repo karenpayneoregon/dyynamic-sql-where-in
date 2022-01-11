@@ -303,7 +303,7 @@ Note parenesis then curly brace followed by 0 then close curly brace then close 
 ## Running code samples
 
 - ~~Open BaseSqlServerConnections class in BaseLibrary project and change DatabaseServer from KARENS-PC to your server name or .\SQLEXPRESS.~~
-- Open script.sql located in WhereConditionsTest unit test project.
+- Open script.sql located DatabaseScripts folder off the Solution root folder.
 - Line 7 and line 8, check the path for FILENAME, ensure it points to your SQL-Server path, if different than alter the path.
 - Run the script in Visual Studio or SSMS (SQL-Server Management Studio).
 - In Visual Studio open Test Explorer.
