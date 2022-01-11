@@ -6,9 +6,15 @@ Both methods may start with a multi-select list or multi-select checkbox control
 
 ## SQL-Server/OleDb versions
 
-There are two versions, one for `SQL-Server` and one for `OleDb/MS-Access`. Currently the OleDb versionn has limited testing.
+There are two versions, one for `SQL-Server` and one for `OleDb/MS-Access`. Currently the OleDb version has limited testing. 
 
-Example included for windows forms
+### Data access 
+
+Is done using data provider connection and command objects, not Entity Framework.
+
+#### Examples included 
+
+Windows forms
 
 ![img](SimpleExamples/assets/whereInForm1.png)
 
@@ -16,7 +22,7 @@ WPF
 
 ![img](assets/figure5.png)
 
-Example where this might be used.
+Example where this might be used also for web solutions.
 
 ![img](assets/figure1.png)
 

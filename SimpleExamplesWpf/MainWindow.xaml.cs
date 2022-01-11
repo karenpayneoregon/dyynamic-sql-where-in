@@ -48,11 +48,20 @@ namespace SimpleExamplesWpf
             _intPtr = windowInterop.Handle;
         }
 
+        /// <summary>
+        /// Present SELECT WHERE IN from selections in ListBox
+        /// </summary>
+        /// <param name="sender">Actual SQL statement</param>
         private void ReceiveQuery(string sender)
         {
             ResultsTextBox.Text = QueryParsers.Format(sender);
         }
 
+        /// <summary>
+        /// If user has one or more selections create a WHERE IN statement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
             
