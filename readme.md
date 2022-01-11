@@ -12,6 +12,10 @@ Example included for windows forms
 
 ![img](SimpleExamples/assets/whereInForm1.png)
 
+WPF
+
+![img](assets/figure5.png)
+
 Example where this might be used.
 
 ![img](assets/figure1.png)
@@ -38,7 +42,9 @@ FROM    dbo.Company
 WHERE   CompanyName IN ( 'FaceBook', 'Macy''s' );
 ```
 
-To dynamically create a WHERE IN condition the type of parameter needs to be considered along with attention needs to be paid for apostrophes in string values. This means when creating parameters Command.Parameters.AddWithValue will not work properly as AddWithValue can take a numeric and convert to a string for instance. This means Command.Parameters.Add needs to be used and set [SqlDbType](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqldbtype?view=net-6.0) property of a parameter to the proper type. 
+To dynamically create a WHERE IN condition the type of parameter needs to be considered along with attention needs to be paid for apostrophes in string values. 
+
+This means when creating parameters Command.Parameters.AddWithValue will not work properly as AddWithValue can take a numeric and convert to a string for instance. This means Command.Parameters.Add needs to be used and set [SqlDbType](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqldbtype?view=net-6.0) property of a parameter to the proper type. 
 
 For this the following method GetDbType accepts a generic type and returns the proper SqlDbType.
 
@@ -120,7 +126,7 @@ public static void AddParamsToCommand<T>(this SqlCommand cmd, string pPrefix, IE
 }
 ```
 
-The following takes a partial WHERE IN condition e.g. SELECT Id FROM Customers WHERE Country IN ({0}). {0} will be replaced with one parameter for each value passed in from the last parameter. pPrefix prefixes each parameter name e.g. if the prefix was country and there were three country names we end up with @country1, @country2, @country3.
+The following takes a partial `WHERE IN` condition e.g. `SELECT` Id `FROM` Customers `WHERE` Country `IN` ({0}). {0} will be replaced with one parameter for each value passed in from the last parameter. pPrefix prefixes each parameter name e.g. if the prefix was country and there were three country names we end up with `@country1`, `@country2`, `@country3`.
 
 ```csharp
 public static string BuildInClause<T>(string partialClause, string pPrefix, IEnumerable<T> parameters)
@@ -177,7 +183,7 @@ public void IntWhereConditions()
 }
 ```
 
-The following method takes each parameter, builds a parameter in cmd, the SqlCommand then sets values for each parameter.
+The following method takes each parameter, builds a parameter in cmd, the `SqlCommand` then sets values for each parameter.
 
 ```csharp
 public List<string> GetByPrimaryKeys(List<int> pIdentifiers)
@@ -223,7 +229,7 @@ public List<string> GetByPrimaryKeys(List<int> pIdentifiers)
 }
 ```
 
-Since SqlWhereInParamBuilder.BuildInClause figured out parameter types no matter the type passed in you can pass in strings rather than a int as per the above example e.g.
+Since `SqlWhereInParamBuilder.BuildInClause` figured out parameter types no matter the type passed in you can pass in strings rather than a int as per the above example e.g.
 
 ```csharp
 public List<int> GetCustomersKeysBack(List<string> pNames)
@@ -299,7 +305,7 @@ Note parenesis then curly brace followed by 0 then close curly brace then close 
 - ~~Open BaseSqlServerConnections class in BaseLibrary project and change DatabaseServer from KARENS-PC to your server name or .\SQLEXPRESS.~~
 - Open script.sql located in WhereConditionsTest unit test project.
 - Line 7 and line 8, check the path for FILENAME, ensure it points to your SQL-Server path, if different than alter the path.
-- Run the script in Visual Studio or SSMS Jump (SQL-Server Management Studio).
+- Run the script in Visual Studio or SSMS (SQL-Server Management Studio).
 - In Visual Studio open Test Explorer.
 - Build the solution.
 - Run the test from Test Explorer or run each test one at a time.
@@ -307,7 +313,7 @@ Note parenesis then curly brace followed by 0 then close curly brace then close 
 
 # Original source
 
-I wrote the following under .NET Framework 4.6. This version using .NET Core 5 along with refactors to lose code with the same functionality as the original code.
+I wrote the following under `.NET Framework 4.6`. This version using `.NET Core 5` along with refactors to lose code with the same functionality as the original code.
 
 [SQL-Server dynamic C#: Dynamic WHERE IN conditions in C#for SQL Server](https://social.technet.microsoft.com/wiki/contents/articles/51874.sql-server-dynamic-c-dynamic-where-in-conditions-in-c-for-sql-server.aspx)
 
