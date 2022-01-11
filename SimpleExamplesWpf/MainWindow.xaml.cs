@@ -61,7 +61,6 @@ namespace SimpleExamplesWpf
         /// If user has one or more selections create a WHERE IN statement
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
             
