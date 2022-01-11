@@ -8,24 +8,44 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SimpleExamplesWpf.Classes;
+using WindowsFormsLibrary.Classes;
 
 namespace SimpleExamplesWpf
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
+        private IntPtr _intPtr;
+
+        private bool _shown;
         public MainWindow()
         {
             InitializeComponent();
+
             DataContext = new ViewModel();
             DataOperations.GetCommandText += ReceiveQuery;
+        }
+
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+
+            if (_shown)
+            {
+                return;
+            }
+
+            _shown = true;
+
+            Window window = GetWindow(this);
+            var windowInterop = new WindowInteropHelper(window ?? throw new InvalidOperationException());
+            _intPtr = windowInterop.Handle;
         }
 
         private void ReceiveQuery(string sender)
@@ -44,8 +64,12 @@ namespace SimpleExamplesWpf
 
             if (identifiers.Count <= 0) return;
 
-            var (list, exception) = DataOperations.GetByPrimaryKeys(identifiers);
-            // TODO TaskDialog
+            var ( _ , exception) = DataOperations.GetByPrimaryKeys(identifiers);
+            if (exception is not null)
+            {
+                Dialogs.ErrorBox(exception);
+            }
+
         }
     }
 }

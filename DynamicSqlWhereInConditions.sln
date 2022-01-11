@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExamples", "SimpleExa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExamplesWpf", "SimpleExamplesWpf\SimpleExamplesWpf.csproj", "{0DAF7269-A408-4FB1-B519-E405B03D502A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsFormsLibrary", "WindowsFormsLibrary\WindowsFormsLibrary.csproj", "{6C4D868E-FAA6-4F65-86A8-68D9247DA591}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,14 @@ Global
 		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Release|x86.ActiveCfg = Release|Any CPU
 		{0DAF7269-A408-4FB1-B519-E405B03D502A}.Release|x86.Build.0 = Release|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Debug|x86.Build.0 = Debug|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Release|x86.ActiveCfg = Release|Any CPU
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +102,7 @@ Global
 		{C0186C53-45CA-4C43-AA94-006F1CE33A9A} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
 		{819F5699-AB15-4A7E-9FC9-80E84CF1C0A2} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
 		{0DAF7269-A408-4FB1-B519-E405B03D502A} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
+		{6C4D868E-FAA6-4F65-86A8-68D9247DA591} = {CAD93273-749F-4E6C-B8A3-99B8C44AE403}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34A459BE-BA0F-4662-8B9F-16B24B0093D3}
