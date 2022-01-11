@@ -35,28 +35,17 @@ namespace SimpleExamplesWpf
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Country> checkedCountries = ((ViewModel)DataContext)
-                .Items
-                .Where(wrapper => wrapper.IsChecked)
-                .Select(wrapper => wrapper.Value)
-                .ToList();
-
-            if (checkedCountries.Count <= 0) return;
-
-            foreach (var country in checkedCountries)
-            {
-                Debug.WriteLine($"{country.Id,-3}{country.Name}");
-            }
-
-            Debug.WriteLine("");
-
-            var test = ((ViewModel)DataContext)
+            
+            var identifiers = ((ViewModel)DataContext)
                 .Items
                 .Where(wrapper => wrapper.IsChecked)
                 .Select(wrapper => wrapper.Value.Id)
                 .ToList();
 
-            var results = DataOperations.GetByPrimaryKeys(test);
+            if (identifiers.Count <= 0) return;
+
+            var (list, exception) = DataOperations.GetByPrimaryKeys(identifiers);
+            // TODO TaskDialog
         }
     }
 }
