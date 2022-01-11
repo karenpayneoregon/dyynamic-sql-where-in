@@ -69,18 +69,6 @@
                 Text="Results"
                 TextWrapping="Wrap" />
 
-            <!--<TextBlock
-                Height="344"
-                Margin="10,0,0,0"
-                FontWeight="Bold">
-                Selected countries
-            </TextBlock>-->
-
-            <!--<ItemsControl
-                x:Name="items"
-                Margin="4"
-                DisplayMemberPath="Value"
-                ItemsSource="{Binding Path=Items.CheckedItems}" />-->
         </StackPanel>
 
     </Grid>
