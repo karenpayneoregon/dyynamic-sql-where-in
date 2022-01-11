@@ -18,7 +18,7 @@ namespace SimpleExamplesWpf.Classes
             set
             {
                 _items = value;
-                OnPropertyChanged("Items");
+                OnPropertyChanged(nameof(Items));
             }
         }
 
