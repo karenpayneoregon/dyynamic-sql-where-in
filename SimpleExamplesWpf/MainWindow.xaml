@@ -41,7 +41,10 @@
                             Margin="3"
                             VerticalAlignment="Center"
                             IsChecked="{Binding IsChecked, Mode=TwoWay}" />
-                        <ContentPresenter Margin="1" Content="{Binding Value}" />
+                        <!--<ContentPresenter Margin="1" Content="{Binding Value.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />-->
+
+                        <TextBox BorderThickness="0" Text="{Binding Value.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

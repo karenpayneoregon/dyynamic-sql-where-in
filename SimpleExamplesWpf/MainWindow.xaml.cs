@@ -60,15 +60,18 @@ namespace SimpleExamplesWpf
         /// <summary>
         /// If user has one or more selections create a WHERE IN statement
         /// </summary>
-        /// <param name="sender"></param>
+        /// <remarks>
+        ///  First three lines of code are full functional, uncomment and
+        ///  set a breakpoint to see return values for first two, last will
+        ///  display to Visual Studio's output window
+        /// </remarks>
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            var identifiers = ((ViewModel)DataContext)
-                .Items
-                .Where(wrapper => wrapper.IsChecked)
-                .Select(wrapper => wrapper.Value.Id)
-                .ToList();
+            //TinkeringWithFirstCountry();
+            //Debug.WriteLine(((ViewModel)DataContext).Items.FirstOrDefault()!.Value.Name);
+            //var countryNames = SelectedCountryNames();
+
+            var identifiers = SelectedIdentifiers();
 
             if (identifiers.Count <= 0) return;
 
@@ -79,6 +82,35 @@ namespace SimpleExamplesWpf
             }
 
         }
+
+        private void TinkeringWithFirstCountry()
+        {
+            TextBox countryTextBox = new TextBox();
+            ((ViewModel)DataContext).Items.FirstOrDefault()!.Value.Name = "Karen";
+
+            ((ViewModel)DataContext).Items.Add(new Country()
+            {
+                Id = -1,
+                Name = countryTextBox.Text
+            });
+        }
+
+        private List<int> SelectedIdentifiers()
+        {
+            List<int> identifiers = ((ViewModel)DataContext)
+                .Items
+                .Where(wrapper => wrapper.IsChecked)
+                .Select(wrapper => wrapper.Value.Id)
+                .ToList();
+            return identifiers;
+        }
+
+        private List<string> SelectedCountryNames() =>
+            ((ViewModel)DataContext)
+            .Items
+            .Where(wrapper => wrapper.IsChecked)
+            .Select(wrapper => wrapper.Value.Name)
+            .ToList();
     }
 }
 
