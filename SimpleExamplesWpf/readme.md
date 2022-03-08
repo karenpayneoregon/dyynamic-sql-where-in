@@ -1,6 +1,6 @@
 ﻿# About
 
-Mirror of Winddows Forms example with a bite more flash in regards with how the SQL is formatted.
+Mirror of Windows Forms example with a bite more flash in regards with how the SQL is formatted.
 
 ![](../assets/figure5.png)
 
