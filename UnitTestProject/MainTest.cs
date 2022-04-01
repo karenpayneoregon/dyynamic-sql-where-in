@@ -170,7 +170,6 @@ namespace UnitTestProject
         }
 
         [TestMethod]
-        [TestTraits(Trait.PlaceHolder)]
         public void UpdateExample()
         {
             var identifiers = new List<int>() { 1, 3,20, 2,  45 };
