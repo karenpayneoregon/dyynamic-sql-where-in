@@ -169,5 +169,18 @@ namespace UnitTestProject
             Assert.IsTrue(expectedResults.SequenceEqual(list));
         }
 
+        [TestMethod]
+        [TestTraits(Trait.PlaceHolder)]
+        public void UpdateExample()
+        {
+            var identifiers = new List<int>() { 1, 3,20, 2,  45 };
+            var (actual, exposed) = DataOperations.UpdateExample(
+                "UPDATE table SET column = 0 WHERE id IN", identifiers);
+
+            Console.WriteLine(actual);
+            Console.WriteLine(exposed);
+        }
+
+
     }
 }

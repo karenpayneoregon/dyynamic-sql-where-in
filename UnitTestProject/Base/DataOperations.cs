@@ -301,5 +301,20 @@ namespace UnitTestProject.Base
             IConfigurationRoot config = builder.Build();
             return config;
         }
+
+        public static (string actual, string exposed) UpdateExample(string commandText, List<int> identifiers)
+        {
+
+            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cmd = new SqlCommand() { Connection = cn };
+            
+            cmd.CommandText = SqlWhereInParamBuilder.BuildInClause(commandText + " ({0})", "p", identifiers);
+
+
+            cmd.AddParamsToCommand("p", identifiers);
+   
+            return (cmd.CommandText, cmd.ActualCommandText());
+
+        }
     }
 }
