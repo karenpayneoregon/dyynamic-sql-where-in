@@ -14,12 +14,12 @@ namespace SimpleExamplesWpf.Classes
 
         private static string _connectionString = "";
 
-        public static string GetSqlConnection()
+        public static string GetSqlWhereDatabaseConnection()
         {
             if (string.IsNullOrWhiteSpace(_connectionString))
             {
                 var config = ReadAppsettings(out _);
-                _connectionString = config.GetConnectionString("DatabaseConnection");
+                _connectionString = config.GetConnectionString("WhereDatabaseConnection");
             }
 
             return _connectionString;
@@ -33,7 +33,7 @@ namespace SimpleExamplesWpf.Classes
         {
             var list = new List<Country>();
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             using var cmd = new SqlCommand()
             {
                 Connection = cn, 
@@ -61,7 +61,7 @@ namespace SimpleExamplesWpf.Classes
 
             var customerList = new List<string>();
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             using var cmd = new SqlCommand() { Connection = cn };
 
             // create one parameter for each key in pIdentifiers

@@ -180,6 +180,31 @@ namespace UnitTestProject
             Console.WriteLine(exposed);
         }
 
+        [TestMethod]
+        [TestTraits(Trait.PlaceHolder)]
+        public void GetColumnNamesFromDatabaseTableTest()
+        {
+            // arrange
+            List<string> expected = new List<string>()
+            {
+                "CompanyName", 
+                "Street", 
+                "City", 
+                "Region", 
+                "PostalCode", 
+                "Phone", 
+                "Fax"
+            };
+
+            // act
+            var columnNames = DataOperations.TableColumnNames("Customers");
+
+            // assert
+            CollectionAssert.AreEqual(columnNames,expected);
+
+        }
+
+
 
     }
 }

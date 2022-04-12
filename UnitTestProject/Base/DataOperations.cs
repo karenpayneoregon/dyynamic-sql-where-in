@@ -14,17 +14,20 @@ namespace UnitTestProject.Base
 {
     public class DataOperations
     {
-        private static string _connectionString = "";
 
-        public static string GetSqlConnection()
+        public static string GetSqlWhereDatabaseConnection() 
+            => ReadAppsettings(out _).GetConnectionString("WhereDatabaseConnection");
+
+        public static string GetSqlNorthWind2020DatabaseConnection() 
+            => ReadAppsettings(out _).GetConnectionString("NorthDatabaseConnection");
+
+        public static List<string> TableColumnNames(string tableName)
         {
-            if (string.IsNullOrWhiteSpace(_connectionString))
-            {
-                var config = ReadAppsettings(out _);
-                _connectionString = config.GetConnectionString("DatabaseConnection");
-            }
+            var connectionString = GetSqlNorthWind2020DatabaseConnection();
+            var (columnNames, _ ) = SqlServerHelper.ColumnNames(connectionString, tableName);
+            
+            return columnNames;
 
-            return _connectionString;
         }
 
         /// <summary>
@@ -41,7 +44,7 @@ namespace UnitTestProject.Base
 
             var customerList = new List<int>();
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             using var cmd = new SqlCommand() { Connection = cn };
             // Create a parameter for each value in pNames
 
@@ -145,7 +148,7 @@ namespace UnitTestProject.Base
 
             var customerList = new List<string>();
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             using var cmd = new SqlCommand() { Connection = cn };
 
             cmd.CommandText = SqlWhereInParamBuilder
@@ -185,7 +188,7 @@ namespace UnitTestProject.Base
 
             var customerList = new List<string>();
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             using var cmd = new SqlCommand() { Connection = cn };
             // create one parameter for each key in pIdentifiers
             cmd.CommandText = SqlWhereInParamBuilder
@@ -221,7 +224,7 @@ namespace UnitTestProject.Base
 
             var customerList = new List<string>();
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             using var cmd = new SqlCommand() { Connection = cn };
             cmd.CommandText = SqlWhereInParamBuilder.BuildInClause(
                 "SELECT CompanyName FROM dbo.Company WHERE id NOT IN ({0})", "CompId",
@@ -266,7 +269,7 @@ namespace UnitTestProject.Base
 
             var datePrimaryKeyList = new List<int>();
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             var selectStatement = SqlWhereInParamBuilder.BuildInClause(
                 "SELECT e.EventID, e.StartDate FROM dbo.Events AS e WHERE StartDate IN ({0})",
                 "sd",
@@ -305,7 +308,7 @@ namespace UnitTestProject.Base
         public static (string actual, string exposed) UpdateExample(string commandText, List<int> identifiers)
         {
 
-            using var cn = new SqlConnection() { ConnectionString = GetSqlConnection() };
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
             using var cmd = new SqlCommand() { Connection = cn };
             
             cmd.CommandText = SqlWhereInParamBuilder.BuildInClause(commandText + " ({0})", "p", identifiers);
