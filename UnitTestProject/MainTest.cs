@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTestProject.Base;
+using UnitTestProject.Models;
 
 namespace UnitTestProject
 {
@@ -173,8 +174,22 @@ namespace UnitTestProject
         public void UpdateExample()
         {
             var identifiers = new List<int>() { 1, 3,20, 2,  45 };
-            var (actual, exposed) = DataOperations.UpdateExample(
+            var (actual, exposed) = DataOperations.DeleteOrUpdateExample(
                 "UPDATE table SET column = 0 WHERE id IN", identifiers);
+
+            Console.WriteLine(actual);
+            Console.WriteLine(exposed);
+        }
+
+        [TestMethod]
+        public void DeleteExample()
+        {
+
+
+            var partIdentifiers = BogusOperations.PartsList().Select(part => part.PartId).ToList();
+
+            var (actual, exposed) = DataOperations.DeleteOrUpdateExample(
+                "DELETE FROM Parts WHERE PartId IN", partIdentifiers);
 
             Console.WriteLine(actual);
             Console.WriteLine(exposed);

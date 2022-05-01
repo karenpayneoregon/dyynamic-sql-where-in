@@ -198,6 +198,7 @@ namespace UnitTestProject.Base
             // populate each parameter with values from pIdentifiers
             cmd.AddParamsToCommand("CompId", pIdentifiers);
             Debug.WriteLine(cmd.ActualCommandText());
+            Debug.WriteLine(cmd.CommandText);
             try
             {
                 cn.Open();
@@ -305,7 +306,7 @@ namespace UnitTestProject.Base
             return config;
         }
 
-        public static (string actual, string exposed) UpdateExample(string commandText, List<int> identifiers)
+        public static (string actual, string exposed) DeleteOrUpdateExample(string commandText, List<int> identifiers)
         {
 
             using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
@@ -316,6 +317,20 @@ namespace UnitTestProject.Base
 
             cmd.AddParamsToCommand("p", identifiers);
    
+            return (cmd.CommandText, cmd.ActualCommandText());
+
+        }
+        public static (string actual, string exposed) DeleteOrUpdateExample(string commandText, List<string> identifiers)
+        {
+
+            using var cn = new SqlConnection() { ConnectionString = GetSqlWhereDatabaseConnection() };
+            using var cmd = new SqlCommand() { Connection = cn };
+
+            cmd.CommandText = SqlWhereInParamBuilder.BuildInClause(commandText + " ({0})", "p", identifiers);
+
+
+            cmd.AddParamsToCommand("p", identifiers);
+
             return (cmd.CommandText, cmd.ActualCommandText());
 
         }

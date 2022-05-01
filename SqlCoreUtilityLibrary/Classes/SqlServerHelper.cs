@@ -4,11 +4,17 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SqlCoreUtilityLibrary.Models;
 
 namespace SqlCoreUtilityLibrary.Classes
 {
     public class SqlServerHelper
     {
+        public static string CreateLikeCondition(string tableName, string columnName, SqlServerLike like, bool notLike)
+        {
+
+            return "";
+        }
         /// <summary>
         /// Get column names for a SQL-Server database table
         /// </summary>
