@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <LangVersion>9.0</LangVersion>
+	  <TargetFramework>net5.0</TargetFramework>
+	  <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	  <PackageOutputPath>./nupkg</PackageOutputPath>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Title>Provides a language extension to reveal named parameters for sql statements</Title>
+	  <Authors>Karen Payne</Authors>
+	  <Description>Provides a language extension to reveal named parameters for sql statements working with sql-server, Oracle and microsoft access in netcore projects</Description>
+	  <Copyright>Copyright (c) Karen Payne 2022</Copyright>
+	  <PackageProjectUrl>https://github.com/karenpayneoregon/dyynamic-sql-where-in/tree/master/DbLibrary</PackageProjectUrl>
+	  <PackageReadmeFile>readme.md</PackageReadmeFile>
+	  <RepositoryUrl>https://github.com/karenpayneoregon/dyynamic-sql-where-in</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>sql-server;oracle;ms-access;query;c#;csharp;vbnet</PackageTags>
+	  <PackageReleaseNotes>This is a netcore version of a net framework extension written by me years ago</PackageReleaseNotes>
+	  <PackageIcon>nugetImage.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="readme.md" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="licenses\LICENSE.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="nugetImage.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="readme.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>

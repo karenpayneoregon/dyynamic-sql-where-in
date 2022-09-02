@@ -1,4 +1,4 @@
-﻿namespace DbLibrary.LanguageExtensions
+﻿namespace DbPeekQueryLibrary.LanguageExtensions
 {
     public enum CommandProvider
     {

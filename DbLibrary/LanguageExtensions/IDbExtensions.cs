@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace DbLibrary.LanguageExtensions
+namespace DbPeekQueryLibrary.LanguageExtensions
 {
     /// <summary>
     /// This extension is good for viewing a SQL statement (SELECT, DELETE, UPDATE, INSERT) that
@@ -24,12 +24,12 @@ namespace DbLibrary.LanguageExtensions
         /// Used to show an SQL statement with actual values for debugging or logging to a file. 
         /// </summary> 
         /// <param name="pCommand">Command object</param>
-        /// <param name="pProvider"></param>
+        /// <param name="pProvider">data provider e.g. sql-server, oracle, access</param>
         /// <param name="pQualifier">Defaults to SQL-Server</param>
         /// <returns>Command object command text with parameter values</returns> 
         public static string ActualCommandText(this IDbCommand pCommand, CommandProvider pProvider = CommandProvider.SqlServer, string pQualifier = "@")
         {
-            var sb = new StringBuilder(pCommand.CommandText);
+            var builder = new StringBuilder(pCommand.CommandText);
 
             if (pProvider != CommandProvider.Oracle)
             {
@@ -64,12 +64,12 @@ namespace DbLibrary.LanguageExtensions
                             throw new Exception($"no value given for parameter '{p.ParameterName}'");
                         }
 
-                        sb = sb.Replace(p.ParameterName, $"'{p.Value.ToString()!.Replace("'", "''")}'");
+                        builder = builder.Replace(p.ParameterName, $"'{p.Value.ToString()!.Replace("'", "''")}'");
 
                     }
                     else
                     {
-                        sb = sb.Replace(string.Concat(pQualifier, p.ParameterName), $"'{p.Value!.ToString()!.Replace("'", "''")}'");
+                        builder = builder.Replace(string.Concat(pQualifier, p.ParameterName), $"'{p.Value!.ToString()!.Replace("'", "''")}'");
                     }
                 }
                 else
@@ -79,12 +79,12 @@ namespace DbLibrary.LanguageExtensions
                      * value for that parameter so return the parameter name instead
                      * rather than a value.
                      */
-                    sb = pProvider == CommandProvider.Oracle ? sb.Replace(p.ParameterName, p.Value?.ToString() ?? p.ParameterName) :
-                        sb.Replace(p.ParameterName, p.Value!.ToString());
+                    builder = pProvider == CommandProvider.Oracle ? builder.Replace(p.ParameterName, p.Value?.ToString() ?? p.ParameterName) :
+                        builder.Replace(p.ParameterName, p.Value!.ToString());
                 }
             }
 
-            return sb.ToString();
+            return builder.ToString();
 
         }
     }

@@ -21,7 +21,7 @@
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\DbLibrary\DbLibrary.csproj" />
+		<ProjectReference Include="..\DbLibrary\DbPeekQueryLibrary.csproj" />
 		<ProjectReference Include="..\SqlCoreUtilityLibrary\WhereInUtilityLibrary.csproj" />
 		<ProjectReference Include="..\WindowsFormsLibrary\WindowsFormsLibrary.csproj" />
 	</ItemGroup>

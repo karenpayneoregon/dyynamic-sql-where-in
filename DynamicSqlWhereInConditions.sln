@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net core", "net core", "{CAD93273-749F-4E6C-B8A3-99B8C44AE403}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbLibrary", "DbLibrary\DbLibrary.csproj", "{CD9247C8-E45A-4129-A832-4FA484B60570}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbPeekQueryLibrary", "DbLibrary\DbPeekQueryLibrary.csproj", "{CD9247C8-E45A-4129-A832-4FA484B60570}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhereInUtilityLibrary", "SqlCoreUtilityLibrary\WhereInUtilityLibrary.csproj", "{22D2C2A5-C253-4C1A-9987-664B97A024AF}"
 EndProject
