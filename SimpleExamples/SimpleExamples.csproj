@@ -18,11 +18,12 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+		<PackageReference Include="WhereInUtilityLibrary" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\DbLibrary\DbLibrary.csproj" />
-	  <ProjectReference Include="..\SqlCoreUtilityLibrary\WhereInUtilityLibrary.csproj" />
+	  <!--<ProjectReference Include="..\SqlCoreUtilityLibrary\WhereInUtilityLibrary.csproj" />-->
 	</ItemGroup>
 
 	<ItemGroup>
