@@ -2,6 +2,10 @@
 
 provides methods for writing [SQL WHERE IN](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/in-transact-sql?view=sql-server-2017) conditions in C# dynamically for SQL-Server tables using SqlClient data provider. WHERE IN condition are used to assist for an alternative to using OR conditions in a SELECT and DELETE statement are most common. 
 
+# .NET Frameworks
+
+.NET Core 5/6 and higher, for .NET Framework 4.x, see the non NuGet [class project](https://github.com/karenpayneoregon/dyynamic-sql-where-in/tree/master/SqlUtilityLibrary).
+
 ## Simple example
 
 In this example the goal is to get company names (kept to one column for simplicity) where one or more keys (for the primary key CompId) are passed in.
@@ -18,45 +22,47 @@ Then `cmd.AddParamsToCommand("CompId", pIdentifiers);` adds parameters to, in th
 Note  that the following  `cmd.ActualCommandText()` provides you to see the actual query with parameter values, it is not part of this library but is available in the source repository in the project `DbLibrary` which should only be used in development, never in production.
 
 
+This code is in the sample project
+
 ```csharp
-        public static (List<string> list, Exception exception) GetByPrimaryKeys(List<int> pIdentifiers)
+public static (List<string> list, Exception exception) GetByPrimaryKeys(List<int> pIdentifiers)
+{
+
+    var customerList = new List<string>();
+
+    using var cn = new SqlConnection() { ConnectionString = ... };
+    using var cmd = new SqlCommand() { Connection = cn };
+
+    // create one parameter for each key in pIdentifiers
+    cmd.CommandText = SqlWhereInParamBuilder
+        .BuildInClause("SELECT CompanyName FROM dbo.Company WHERE id IN ({0})", "CompId",
+            pIdentifiers);
+
+    // populate each parameter with values from pIdentifiers
+    cmd.AddParamsToCommand("CompId", pIdentifiers);
+
+    //GetCommandText?.Invoke(cmd.ActualCommandText());
+
+    try
+    {
+        cn.Open();
+        var reader = cmd.ExecuteReader();
+
+        if (reader.HasRows)
         {
-
-            var customerList = new List<string>();
-
-            using var cn = new SqlConnection() { ConnectionString = ... };
-            using var cmd = new SqlCommand() { Connection = cn };
-
-            // create one parameter for each key in pIdentifiers
-            cmd.CommandText = SqlWhereInParamBuilder
-                .BuildInClause("SELECT CompanyName FROM dbo.Company WHERE id IN ({0})", "CompId",
-                    pIdentifiers);
-
-            // populate each parameter with values from pIdentifiers
-            cmd.AddParamsToCommand("CompId", pIdentifiers);
-
-            //GetCommandText?.Invoke(cmd.ActualCommandText());
-
-            try
+            while (reader.Read())
             {
-                cn.Open();
-                var reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        customerList.Add(reader.GetString(0));
-                    }
-                }
-
-                return (customerList, null);
-            }
-            catch (Exception ex)
-            {
-                return (null, ex);
+                customerList.Add(reader.GetString(0));
             }
         }
+
+        return (customerList, null);
+    }
+    catch (Exception ex)
+    {
+        return (null, ex);
+    }
+}
 ```
 
 # Using in your project
