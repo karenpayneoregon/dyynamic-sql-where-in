@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DbLibrary.LanguageExtensions;
 using Microsoft.Extensions.Configuration;
-using SqlCoreUtilityLibrary.Classes;
+using WhereInUtilityLibrary.Classes;
 
 namespace UnitTestProject.Base
 {

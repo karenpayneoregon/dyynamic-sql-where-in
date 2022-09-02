@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <LangVersion>9.0</LangVersion>
+	  <TargetFramework>net5.0</TargetFramework>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Authors>Karen Payne</Authors>
+	  <Description>Provides methods to create WHERE IN clauses for SQL-Server, Oracle and MS-Access</Description>
+	  <Copyright>Copyright (c) Karen Payne 2022</Copyright>
+	  <PackageProjectUrl>https://github.com/karenpayneoregon/dyynamic-sql-where-in</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/karenpayneoregon/dyynamic-sql-where-in</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>where in;sql-server;.net core</PackageTags>
+	  <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	  <PackageOutputPath>./nupkg</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CA1416;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.OleDb" Version="6.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="licenses\LICENSE.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+</Project>

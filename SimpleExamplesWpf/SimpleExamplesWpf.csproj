@@ -22,7 +22,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\DbLibrary\DbLibrary.csproj" />
-		<ProjectReference Include="..\SqlCoreUtilityLibrary\SqlCoreUtilityLibrary.csproj" />
+		<ProjectReference Include="..\SqlCoreUtilityLibrary\WhereInUtilityLibrary.csproj" />
 		<ProjectReference Include="..\WindowsFormsLibrary\WindowsFormsLibrary.csproj" />
 	</ItemGroup>
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using DbLibrary.LanguageExtensions;
 using Microsoft.Extensions.Configuration;
-using SqlCoreUtilityLibrary.Classes;
+using WhereInUtilityLibrary.Classes;
 
 namespace SimpleExamplesWpf.Classes
 {

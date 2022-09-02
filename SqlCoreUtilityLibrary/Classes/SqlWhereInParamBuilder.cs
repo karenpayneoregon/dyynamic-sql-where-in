@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace SqlCoreUtilityLibrary.Classes
+namespace WhereInUtilityLibrary.Classes
 {
     public static class SqlWhereInParamBuilder
     {

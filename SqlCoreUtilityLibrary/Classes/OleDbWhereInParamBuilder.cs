@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.Linq;
 
-namespace SqlCoreUtilityLibrary.Classes
+namespace WhereInUtilityLibrary.Classes
 {
     public static class OleDbWhereInParamBuilder
     {

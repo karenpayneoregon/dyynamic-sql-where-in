@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32002.261
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlUtilityLibrary", "SqlUtilityLibrary\SqlUtilityLibrary.csproj", "{15D4EB40-43C0-4ABD-B22A-9C3A9F78D12D}"
 EndProject
@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net core", "net core", "{CA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbLibrary", "DbLibrary\DbLibrary.csproj", "{CD9247C8-E45A-4129-A832-4FA484B60570}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlCoreUtilityLibrary", "SqlCoreUtilityLibrary\SqlCoreUtilityLibrary.csproj", "{22D2C2A5-C253-4C1A-9987-664B97A024AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhereInUtilityLibrary", "SqlCoreUtilityLibrary\WhereInUtilityLibrary.csproj", "{22D2C2A5-C253-4C1A-9987-664B97A024AF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{C0186C53-45CA-4C43-AA94-006F1CE33A9A}"
 EndProject

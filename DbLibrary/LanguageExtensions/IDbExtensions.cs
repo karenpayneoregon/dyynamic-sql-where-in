@@ -46,6 +46,7 @@ namespace DbLibrary.LanguageExtensions
                     return pCommand.CommandText;
                 }
             }
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             else if (pProvider == CommandProvider.Oracle)
             {
                 pQualifier = ":";
@@ -63,12 +64,12 @@ namespace DbLibrary.LanguageExtensions
                             throw new Exception($"no value given for parameter '{p.ParameterName}'");
                         }
 
-                        sb = sb.Replace(p.ParameterName, $"'{p.Value.ToString().Replace("'", "''")}'");
+                        sb = sb.Replace(p.ParameterName, $"'{p.Value.ToString()!.Replace("'", "''")}'");
 
                     }
                     else
                     {
-                        sb = sb.Replace(string.Concat(pQualifier, p.ParameterName), $"'{p.Value.ToString().Replace("'", "''")}'");
+                        sb = sb.Replace(string.Concat(pQualifier, p.ParameterName), $"'{p.Value!.ToString()!.Replace("'", "''")}'");
                     }
                 }
                 else
@@ -79,7 +80,7 @@ namespace DbLibrary.LanguageExtensions
                      * rather than a value.
                      */
                     sb = pProvider == CommandProvider.Oracle ? sb.Replace(p.ParameterName, p.Value?.ToString() ?? p.ParameterName) :
-                        sb.Replace(p.ParameterName, p.Value.ToString());
+                        sb.Replace(p.ParameterName, p.Value!.ToString());
                 }
             }
 
