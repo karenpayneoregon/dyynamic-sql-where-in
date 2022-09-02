@@ -8,10 +8,20 @@ namespace SimpleExamples.Extensions
 {
     public static class GenericExtensions
     {
-        public static List<Company> CheckedList(this CheckedListBox source)
-            => source.Items.Cast<Company>()
-                .Where((item, index) => source.GetItemChecked(index)).Select(item => item)
+
+
+        /// <summary>
+        /// Get checked items as <see cref="T"/>
+        /// </summary>
+        /// <typeparam name="T">Model</typeparam>
+        /// <param name="sender">CheckedListBox</param>
+        /// <returns>List if one or more items are checked</returns>
+        public static List<T> CheckedList<T>(this CheckedListBox sender)
+            => sender.Items.Cast<T>()
+                .Where((_, index) => sender.GetItemChecked(index))
+                .Select(item => item)
                 .ToList();
+
         public static bool IsNull(this object sender)
         {
             return sender == null || sender == DBNull.Value || Convert.IsDBNull(sender) == true;

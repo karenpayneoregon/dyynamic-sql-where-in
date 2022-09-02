@@ -35,7 +35,7 @@ namespace SimpleExamples
         {
             CompanyListBox.DataSource = null;
 
-            var list = CompanyCheckedListBox.CheckedList();
+            var list = CompanyCheckedListBox.CheckedList<Company>();
 
             if (list.Count <= 0) return;
             var indices = list.Select(company => company.Id).ToList();
