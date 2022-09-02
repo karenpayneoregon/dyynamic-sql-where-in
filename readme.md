@@ -4,6 +4,10 @@ This article provides methods for writing [SQL WHERE IN](https://docs.microsoft.
 
 Both methods may start with a multi-select list or multi-select checkbox control/input dependent on the project type e.g. ASP.NET, WPF or Windows Forms etc.
 
+## NuGet package
+
+For .NET Core see NuGet package [WhereInUtilityLibrary](https://www.nuget.org/packages/WhereInUtilityLibrary/)
+
 ## SQL-Server/OleDb versions
 
 There are two versions, one for `SQL-Server` and one for `OleDb/MS-Access`. Currently the OleDb version has limited testing. 
