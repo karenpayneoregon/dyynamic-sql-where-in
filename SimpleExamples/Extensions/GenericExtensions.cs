@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using SimpleExamples.Classes;
+
 
 namespace SimpleExamples.Extensions
 {
     public static class GenericExtensions
     {
-
 
         /// <summary>
         /// Get checked items as <see cref="T"/>
@@ -22,10 +21,7 @@ namespace SimpleExamples.Extensions
                 .Select(item => item)
                 .ToList();
 
-        public static bool IsNull(this object sender)
-        {
-            return sender == null || sender == DBNull.Value || Convert.IsDBNull(sender) == true;
-        }
+        public static bool IsNull(this object sender) => sender == null || sender == DBNull.Value || Convert.IsDBNull(sender) == true;
 
         /// <summary>
         /// Is the instance of a class null

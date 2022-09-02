@@ -18,9 +18,7 @@ namespace SimpleExamplesWpf.Classes
         {
             TSql120Parser parser = new(false);
 
-            var parsedQuery = parser.Parse(
-                new StringReader(query), 
-                out var errors);
+            var parsedQuery = parser.Parse(new StringReader(query), out var errors);
 
             if (errors.Count > 0)
             {
