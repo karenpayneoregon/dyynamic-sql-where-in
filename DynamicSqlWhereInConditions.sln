@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlUtilityLibrary", "SqlUti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D8B79C2-A670-4467-9234-F58F5F7C9301}"
 	ProjectSection(SolutionItems) = preProject
+		nugetPacking.md = nugetPacking.md
 		readme.md = readme.md
 		DatabaseScripts\script.sql = DatabaseScripts\script.sql
 	EndProjectSection

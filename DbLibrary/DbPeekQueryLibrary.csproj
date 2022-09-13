@@ -16,8 +16,9 @@
 	  <RepositoryUrl>https://github.com/karenpayneoregon/dyynamic-sql-where-in</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>sql-server;oracle;ms-access;query;c#;csharp;vbnet</PackageTags>
-	  <PackageReleaseNotes>This is a netcore version of a net framework extension written by me years ago</PackageReleaseNotes>
+	  <PackageReleaseNotes>No code changes, updated readme file</PackageReleaseNotes>
 	  <PackageIcon>nugetImage.png</PackageIcon>
+	  <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

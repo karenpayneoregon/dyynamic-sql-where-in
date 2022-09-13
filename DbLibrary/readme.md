@@ -12,3 +12,8 @@ Queries use `name parameters`, makes no sense to use this with string concatenat
 
 - For SQL-Server `@`.  
 - For MS-Access (which many use `?` but not with this exension) `@`.  
+
+# Code samples
+
+- [WPF](https://github.com/karenpayneoregon/dyynamic-sql-where-in/tree/master/SimpleExamplesWpf)
+- [Windows forms](https://github.com/karenpayneoregon/dyynamic-sql-where-in/tree/master/SimpleExamples)
