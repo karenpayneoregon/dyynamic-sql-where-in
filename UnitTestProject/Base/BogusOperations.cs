@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Bogus;
 using UnitTestProject.Models;
 
@@ -17,7 +13,7 @@ namespace UnitTestProject.Base
                 .CustomInstantiator(f => new Part(id++))
                 .RuleFor(part =>
                         part.PartName,
-                    f => f.Person.Avatar)
+                    f => f.Commerce.Product())
                 .Generate(count);
         }
     }

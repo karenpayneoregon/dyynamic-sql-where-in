@@ -185,7 +185,6 @@ namespace UnitTestProject
         public void DeleteExample()
         {
 
-
             var partIdentifiers = BogusOperations.PartsList().Select(part => part.PartId).ToList();
 
             var (actual, exposed) = DataOperations.DeleteOrUpdateExample(
