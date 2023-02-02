@@ -4,6 +4,16 @@ This article provides methods for writing [SQL WHERE IN](https://docs.microsoft.
 
 Both methods may start with a multi-select list or multi-select checkbox control/input dependent on the project type e.g. ASP.NET, WPF or Windows Forms etc.
 
+## Running code samples
+
+- ~~Open BaseSqlServerConnections class in BaseLibrary project and change DatabaseServer from KARENS-PC to your server name or .\SQLEXPRESS.~~
+- Open script.sql located `DatabaseScripts folder` off the Solution root folder.
+- Line 7 and line 8, check the path for FILENAME, ensure it points to your SQL-Server path, if different than alter the path.
+- Run the script in Visual Studio or SSMS (SQL-Server Management Studio).
+- In Visual Studio open Test Explorer.
+- Build the solution.
+- Run the test from Test Explorer or run each test one at a time.
+
 ## NuGet package
 
 For .NET Core see NuGet package [WhereInUtilityLibrary](https://www.nuget.org/packages/WhereInUtilityLibrary/)
@@ -310,15 +320,7 @@ Note parenesis then curly brace followed by 0 then close curly brace then close 
 - Write SQL statements as per above.
 
 
-## Running code samples
 
-- ~~Open BaseSqlServerConnections class in BaseLibrary project and change DatabaseServer from KARENS-PC to your server name or .\SQLEXPRESS.~~
-- Open script.sql located DatabaseScripts folder off the Solution root folder.
-- Line 7 and line 8, check the path for FILENAME, ensure it points to your SQL-Server path, if different than alter the path.
-- Run the script in Visual Studio or SSMS (SQL-Server Management Studio).
-- In Visual Studio open Test Explorer.
-- Build the solution.
-- Run the test from Test Explorer or run each test one at a time.
 
 
 # Original source
